@@ -1,0 +1,77 @@
+﻿@model IEnumerable<_5032_MVC_News.Models.ArticleDetail>
+@Styles.Render("~/Content/css")
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover" id="newsTable">
+    <thead class="thead-default">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th class="TitleCol">
+                @Html.DisplayNameFor(model => model.ArticleTitle)
+            </th>
+            <th class="dateCol">
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th class="contentCol">
+                @Html.DisplayNameFor(model => model.ArticleContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ArticleId }, new { @class = "btn btn-secondary btn-xs" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ArticleId }, new { @class = "btn btn-secondary btn-xs" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ArticleId }, new { @class = "btn btn-warning btn-xs" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
